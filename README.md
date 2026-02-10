@@ -1,1 +1,0 @@
-# Brillantes-Catherine-activities
