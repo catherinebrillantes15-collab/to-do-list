@@ -35,56 +35,56 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-pink-100 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-pink-50 flex items-center justify-center p-4">
       <div className="w-full max-w-sm">
-        <div className="bg-pink-50 border border-pink-300 p-6">
-          <h1 className="text-xl font-bold text-center mb-6">Login</h1>
+        <div className="p-10">
+          <h1 className="text-4xl font-bold text-center mb-10 text-pink-600">Login</h1>
 
           {error && (
-            <p className="text-red-600 text-sm mb-4">{error}</p>
+            <p className="text-red-600 text-sm mb-6 p-3 bg-red-50 rounded-2xl">{error}</p>
           )}
 
           <form onSubmit={handleLogin}>
-            <div className="mb-4">
-              <label className="block text-sm mb-1">Username</label>
+            <div className="mb-6">
+              <label className="block text-sm mb-2 text-pink-700 font-semibold">Username</label>
               <input
                 type="text"
-                placeholder="Enter your username"
+                placeholder="Username"
                 value={username}
                 onChange={(e) => {
                   setUsername(e.target.value);
                   if (error) setError('');
                 }}
-                className="w-full px-3 py-2 border border-pink-300 focus:outline-none focus:border-pink-500"
+                className="w-full px-4 py-3 bg-gradient-to-r from-pink-100 to-white border-2 border-pink-200 rounded-full focus:outline-none focus:border-pink-500 focus:ring-2 focus:ring-pink-200"
               />
             </div>
 
-            <div className="mb-4">
-              <label className="block text-sm mb-1">Password</label>
+            <div className="mb-8">
+              <label className="block text-sm mb-2 text-pink-700 font-semibold">Password</label>
               <input
                 type="password"
-                placeholder="Enter your password"
+                placeholder="Password"
                 value={password}
                 onChange={(e) => {
                   setPassword(e.target.value);
                   if (error) setError('');
                 }}
-                className="w-full px-3 py-2 border border-pink-300 focus:outline-none focus:border-pink-500"
+                className="w-full px-4 py-3 bg-gradient-to-r from-pink-100 to-white border-2 border-pink-200 rounded-full focus:outline-none focus:border-pink-500 focus:ring-2 focus:ring-pink-200"
               />
             </div>
 
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-2 bg-pink-600 text-white hover:bg-pink-700 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full py-3 bg-gradient-to-r from-pink-500 to-pink-600 text-white hover:from-pink-600 hover:to-pink-700 disabled:opacity-50 disabled:cursor-not-allowed rounded-full font-bold text-lg transition"
             >
               {loading ? 'Logging in...' : 'Login'}
             </button>
           </form>
 
-          <div className="mt-4 text-center text-sm">
+          <div className="mt-8 text-center text-sm">
             Don't have an account?{' '}
-            <a href="/register" className="text-pink-600 hover:underline">
+            <a href="/register" className="text-pink-600 hover:text-pink-700 font-bold hover:underline">
               Sign up
             </a>
           </div>

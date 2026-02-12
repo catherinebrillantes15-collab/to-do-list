@@ -132,106 +132,85 @@ function home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-pink-100">
-      <div className="p-6">
-        <div className="flex justify-between items-center mb-6">
-          <h1 className="text-2xl font-bold">My Tasks</h1>
-          <button
-            onClick={handleLogout}
-            className="bg-pink-600 hover:bg-pink-700 text-white px-4 py-2"
-          >
-            Logout
-          </button>
-        </div>
+    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-pink-100">
+      <Header onLogout={handleLogout} />
+      <div className="p-8">
 
         {error && (
-          <p className="text-red-600 text-sm mb-4">{error}</p>
+          <p className="text-red-600 text-sm mb-6 p-4 bg-red-50 rounded-2xl">{error}</p>
         )}
 
         {success && (
-          <p className="text-green-600 text-sm mb-4">{success}</p>
+          <p className="text-green-600 text-sm mb-6 p-4 bg-green-50 rounded-2xl">{success}</p>
         )}
 
-        <div className="bg-pink-50 border border-pink-300 p-6">
-          <div className="flex justify-between items-center mb-6">
-            <h2 className="text-xl font-bold">Your Lists</h2>
+        <div className="mb-10">
+          <div className="flex justify-between items-center mb-8">
+            <h2 className="text-3xl font-bold text-pink-600">Lists</h2>
             <button
               onClick={() => setShowForm(true)}
-              className="bg-pink-600 hover:bg-pink-700 text-white px-4 py-2"
+              className="bg-gradient-to-r from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700 text-white px-6 py-3 rounded-full font-bold transition"
             >
               + Add New List
             </button>
           </div>
 
           {lists.length === 0 ? (
-            <div className="text-center py-8">
-              <p className="text-gray-500">No lists yet. Create your first list to get started!</p>
+            <div className="text-center py-12 bg-gradient-to-r from-pink-50 to-white rounded-3xl">
+              <p className="text-gray-600 text-lg">No lists yet. Create your first list to get started!</p>
             </div>
           ) : (
-            <div className="overflow-x-auto">
-              <table className="w-full border-collapse border border-pink-300">
-                <thead>
-                  <tr className="bg-pink-200">
-                    <th className="border border-pink-300 px-4 py-2 text-left">Title</th>
-                    <th className="border border-pink-300 px-4 py-2 text-left">Status</th>
-                    <th className="border border-pink-300 px-4 py-2 text-center">Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {lists.map((item, index) => (
-                    <tr key={item.id || index} className="hover:bg-pink-50">
-                      <td className="border border-pink-300 px-4 py-2">{item.title}</td>
-                      <td className="border border-pink-300 px-4 py-2">
-                        <span className="bg-pink-100 text-pink-700 px-2 py-1 text-xs">
-                          {item.status}
-                        </span>
-                      </td>
-                      <td className="border border-pink-300 px-4 py-2 text-center space-x-2">
-                        <button
-                          onClick={() => handleOpen(item)}
-                          className="bg-pink-500 hover:bg-pink-600 text-white px-3 py-1 text-sm"
-                        >
-                          Open
-                        </button>
-                        <button
-                          onClick={() => handleEdit(item)}
-                          className="bg-pink-400 hover:bg-pink-500 text-white px-3 py-1 text-sm"
-                        >
-                          Edit
-                        </button>
-                        <button
-                          onClick={() => handleDelete(item.id)}
-                          className="bg-pink-300 hover:bg-pink-400 text-white px-3 py-1 text-sm"
-                        >
-                          Delete
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {lists.map((item, index) => (
+                <div key={item.id || index} className="bg-white p-6 rounded-2xl shadow-md hover:shadow-lg transition border-l-4 border-pink-500">
+                  <h3 className="text-xl font-bold text-pink-600 mb-2">{item.title}</h3>
+                  <span className="inline-block bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-sm font-semibold mb-4">
+                    {item.status}
+                  </span>
+                  <div className="flex gap-3 flex-wrap">
+                    <button
+                      onClick={() => handleOpen(item)}
+                      className="flex-1 min-w-fit px-4 py-2 bg-pink-500 hover:bg-pink-600 text-white rounded-full font-semibold transition"
+                    >
+                      Open
+                    </button>
+                    <button
+                      onClick={() => handleEdit(item)}
+                      className="flex-1 min-w-fit px-4 py-2 bg-pink-400 hover:bg-pink-500 text-white rounded-full font-semibold transition"
+                    >
+                      Edit
+                    </button>
+                    <button
+                      onClick={() => handleDelete(item.id)}
+                      className="flex-1 min-w-fit px-4 py-2 bg-pink-300 hover:bg-pink-400 text-white rounded-full font-semibold transition"
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </div>
+              ))}
             </div>
           )}
           {showForm && (
-            <div className="mb-6 p-4 bg-pink-100 border border-pink-300">
-              <h3 className="text-lg font-bold mb-4">
+            <div className="mt-8 p-8 bg-gradient-to-r from-pink-50 to-white rounded-3xl">
+              <h3 className="text-2xl font-bold mb-6 text-pink-600">
                 {editingItem ? "Edit List" : "Create New List"}
               </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 <div>
-                  <label className="block text-sm mb-1">List Title</label>
+                  <label className="block text-sm mb-2 text-pink-700 font-semibold">List Title</label>
                   <input
                     type="text"
                     placeholder="Enter list name..."
-                    className="w-full px-3 py-2 border border-pink-300 focus:outline-none focus:border-pink-500"
+                    className="w-full px-4 py-3 bg-white border-2 border-pink-200 rounded-full focus:outline-none focus:border-pink-500 focus:ring-2 focus:ring-pink-200"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                   />
                 </div>
                 <div>
-                  <label className="block text-sm mb-1">Status</label>
+                  <label className="block text-sm mb-2 text-pink-700 font-semibold">Status</label>
                   <select
-                    className="w-full px-3 py-2 border border-pink-300 focus:outline-none focus:border-pink-500"
+                    className="w-full px-4 py-3 bg-white border-2 border-pink-200 rounded-full focus:outline-none focus:border-pink-500 focus:ring-2 focus:ring-pink-200"
                     value={status}
                     onChange={(e) => setStatus(e.target.value)}
                   >
@@ -242,7 +221,7 @@ function home() {
                   </select>
                 </div>
               </div>
-              <div className="flex justify-end gap-2">
+              <div className="flex justify-end gap-3">
                 <button
                   onClick={() => {
                     setShowForm(false);
@@ -250,13 +229,13 @@ function home() {
                     setTitle("");
                     setStatus("");
                   }}
-                  className="px-4 py-2 bg-pink-200 text-pink-800 hover:bg-pink-300"
+                  className="px-6 py-2 bg-pink-100 text-pink-700 hover:bg-pink-200 rounded-full font-semibold transition"
                 >
                   Cancel
                 </button>
                 <button
                   onClick={handleSubmit}
-                  className="px-4 py-2 bg-pink-600 text-white hover:bg-pink-700"
+                  className="px-6 py-2 bg-gradient-to-r from-pink-500 to-pink-600 text-white hover:from-pink-600 hover:to-pink-700 rounded-full font-semibold transition"
                 >
                   {editingItem ? "Update" : "Create"}
                 </button>

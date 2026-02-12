@@ -47,22 +47,22 @@ function register() {
   };
 
   return(
-    <div className="min-h-screen bg-pink-100 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-pink-50 flex items-center justify-center p-4">
       <div className="w-full max-w-sm">
-        <div className="bg-pink-50 border border-pink-300 p-6">
-          <h1 className="text-xl font-bold text-center mb-6">Create Account</h1>
+        <div className="p-10">
+          <h1 className="text-4xl font-bold text-center mb-10 text-pink-600">Create Account</h1>
 
           {error && (
-            <p className="text-red-600 text-sm mb-4">{error}</p>
+            <p className="text-red-600 text-sm mb-6 p-3 bg-red-50 rounded-2xl">{error}</p>
           )}
 
           <form onSubmit={handleRegister}>
-            <div className="mb-4">
-              <label className="block text-sm mb-1">Full Name</label>
+            <div className="mb-6">
+              <label className="block text-sm mb-2 text-pink-700 font-semibold">Full Name</label>
               <input
                 type="text"
-                placeholder="Enter your full name"
-                className="w-full px-3 py-2 border border-pink-300 focus:outline-none focus:border-pink-500"
+                placeholder="Name"
+                className="w-full px-4 py-3 bg-gradient-to-r from-pink-100 to-white border-2 border-pink-200 rounded-full focus:outline-none focus:border-pink-500 focus:ring-2 focus:ring-pink-200"
                 value={name}
                 onChange={(e) => {
                   setName(e.target.value);
@@ -71,12 +71,12 @@ function register() {
               />
             </div>
 
-            <div className="mb-4">
-              <label className="block text-sm mb-1">Username</label>
+            <div className="mb-6">
+              <label className="block text-sm mb-2 text-pink-700 font-semibold">Username</label>
               <input
                 type="text"
-                placeholder="Choose a username"
-                className="w-full px-3 py-2 border border-pink-300 focus:outline-none focus:border-pink-500"
+                placeholder="Username"
+                className="w-full px-4 py-3 bg-gradient-to-r from-pink-100 to-white border-2 border-pink-200 rounded-full focus:outline-none focus:border-pink-500 focus:ring-2 focus:ring-pink-200"
                 value={username}
                 onChange={(e) => {
                   setUsername(e.target.value);
@@ -85,12 +85,12 @@ function register() {
               />
             </div>
 
-            <div className="mb-4">
-              <label className="block text-sm mb-1">Password</label>
+            <div className="mb-6">
+              <label className="block text-sm mb-2 text-pink-700 font-semibold">Password</label>
               <input
                 type="password"
-                placeholder="Create a password (min. 6 characters)"
-                className="w-full px-3 py-2 border border-pink-300 focus:outline-none focus:border-pink-500"
+                placeholder="Passwword"
+                className="w-full px-4 py-3 bg-gradient-to-r from-pink-100 to-white border-2 border-pink-200 rounded-full focus:outline-none focus:border-pink-500 focus:ring-2 focus:ring-pink-200"
                 value={password}
                 onChange={(e) => {
                   setPassword(e.target.value);
@@ -99,12 +99,12 @@ function register() {
               />
             </div>
 
-            <div className="mb-4">
-              <label className="block text-sm mb-1">Confirm Password</label>
+            <div className="mb-8">
+              <label className="block text-sm mb-2 text-pink-700 font-semibold">Confirm Password</label>
               <input
                 type="password"
-                placeholder="Confirm your password"
-                className="w-full px-3 py-2 border border-pink-300 focus:outline-none focus:border-pink-500"
+                placeholder="Confirm Password"
+                className="w-full px-4 py-3 bg-gradient-to-r from-pink-100 to-white border-2 border-pink-200 rounded-full focus:outline-none focus:border-pink-500 focus:ring-2 focus:ring-pink-200"
                 value={confirmPass}
                 onChange={(e) => {
                   setConfirmPass(e.target.value);
@@ -116,15 +116,15 @@ function register() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-2 bg-pink-600 text-white hover:bg-pink-700 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full py-3 bg-gradient-to-r from-pink-500 to-pink-600 text-white hover:from-pink-600 hover:to-pink-700 disabled:opacity-50 disabled:cursor-not-allowed rounded-full font-bold text-lg transition"
             >
               {loading ? 'Creating account...' : 'Create Account'}
             </button>
           </form>
 
-          <div className="mt-4 text-center text-sm">
+          <div className="mt-8 text-center text-sm">
             Already have an account?{' '}
-            <a href="/" className="text-pink-600 hover:underline">
+            <a href="/" className="text-pink-600 hover:text-pink-700 font-bold hover:underline">
               Login here
             </a>
           </div>
